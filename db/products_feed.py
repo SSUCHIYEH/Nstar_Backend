@@ -1,0 +1,42 @@
+products = [
+    {
+        "category": "Textile",
+        "name": "Domino wool throw",
+        "price": 82,
+        "image": "/images/textile2.png",
+        "description": "Keep warm with the cozy Domino wool throw from Klippan Yllefabrik. Klippan Yllefabric was founded in 1879 with a philosophy to combine Swedish ",
+        "owner_id": 1,
+    },
+    {
+        "category": "Textile",
+        "name": "Pom Pom cushion 45x45 cm",
+        "price": 76,
+        "image": "/images/textile1.png",
+        "description": "The Pom Pom cushion 45x45 cm from the Swedish By On is a pure dream for those who love soft and cosy styles of decor. This wonderful cushion.",
+        "owner_id": 2,
+    },
+    {
+        "category": "Textile",
+        "name": "Pom Pom cushion 45x45 cm",
+        "price": 100,
+        "image": "/images/textile1.png",
+        "description": "The Pom Pom cushion 45x45 cm from the Swedish By On is a pure dream for those who love soft and cosy styles of decor. This wonderful cushion.",
+        "owner_id": 2,
+    },
+    {
+        "category": "Textile",
+        "name": "Pom Pom cushion 45x45 cm",
+        "price": 120,
+        "image": "/images/textile1.png",
+        "description": "The Pom Pom cushion 45x45 cm from the Swedish By On is a pure dream for those who love soft and cosy styles of decor. This wonderful cushion.",
+        "owner_id": 2,
+    },
+    {
+        "category": "Textile",
+        "name": "Pom Pom cushion 45x45 cm",
+        "price": 200,
+        "image": "/images/textile1.png",
+        "description": "The Pom Pom cushion 45x45 cm from the Swedish By On is a pure dream for those who love soft and cosy styles of decor. This wonderful cushion.",
+        "owner_id": 2,
+    },
+]
