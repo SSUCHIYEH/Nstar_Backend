@@ -9,6 +9,11 @@ uvicorn = "*"
 sqlalchemy = "*"
 pydantic = "*"
 gunicorn = "*"
+passlib = "*"
+email-validator = "*"
+python-jose = "*"
+python-multipart = "*"
+bcrypt = "*"
 
 [dev-packages]
 

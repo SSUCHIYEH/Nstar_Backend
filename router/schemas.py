@@ -1,5 +1,53 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field, validator, EmailStr
 from typing import List
+
+
+# user base
+class UserBase(BaseModel):
+    username: str
+    email: str
+    image: str
+    is_admin: bool
+
+
+# 登入
+class SignInRequestSchema(BaseModel):
+    email: EmailStr
+    password: str
+
+
+class UpdateRequestSchema(UserBase):
+    user_id: int
+    username: str
+    password: str
+
+
+# 密碼?
+class UserRequestSchema(UserBase):
+    password: str
+
+    @classmethod
+    @validator("password")
+    def password_must_have_6_digits(cls, v):
+        if len(v) < 6:
+            raise ValueError("密碼至少要超過6碼喔!")
+        return v
+
+
+# user
+class UserResponseSchema(UserBase):
+    id: int
+
+    class Config:
+        orm_mode = True
+
+
+class UserSignInResponseSchema(BaseModel):
+    access_token: str
+    token_type: str = 'bearer'
+    user_id: int
+    username: str
+
 
 # 商品詳細
 class ProductRequestSchema(BaseModel):
@@ -15,27 +63,6 @@ class ProductRequestSchema(BaseModel):
 class ProductResponseSchema(ProductRequestSchema):
     id: int
     owner_id: int
-
-    class Config:
-        orm_mode = True
-
-
-# user base
-class UserBase(BaseModel):
-    username: str
-    email: str
-    image: str
-    is_admin: bool
-
-
-# 密碼?
-class UserRequestSchema(UserBase):
-    password: str
-
-
-# user
-class UserResponseSchema(UserBase):
-    id: int
 
     class Config:
         orm_mode = True
