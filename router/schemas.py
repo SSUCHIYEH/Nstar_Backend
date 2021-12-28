@@ -57,6 +57,10 @@ class ProductRequestSchema(BaseModel):
     image: str
     description: str
     owner_id: int
+    size: str
+    color: str
+    tag: str
+
 
 
 # 商品

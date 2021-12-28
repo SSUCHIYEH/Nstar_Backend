@@ -34,3 +34,8 @@ def get_product_by_id(product_id: int, db: Session = Depends(get_db)):
 @router.get("/category/{category}", response_model=List[ProductResponseSchema])
 def get_product_by_category(category: str, db: Session = Depends(get_db)):
     return db_product.get_product_by_category(category=category, db=db)
+
+
+@router.post("/delete/{product_id}")
+def delete_product_by_id(product_id: int, db: Session = Depends(get_db)):
+    return db_product.delete_product_by_id(product_id=product_id, db=db)

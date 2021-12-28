@@ -13,6 +13,9 @@ def db_feed(db: Session):
         name=product["name"],
         price=product["price"],
         image=product["image"],
+        size=product["size"],
+        color=product["color"],
+        tag=product["tag"],
         description=product["description"],
         owner_id=product["owner_id"]
     ) for product in products]
@@ -29,8 +32,11 @@ def create(db: Session, request: ProductRequestSchema) -> Product:
         name=request.name,
         price=request.price,
         image=request.image,
+        size=request.size,
+        color=request.color,
+        tag=request.tag,
         description=request.description,
-        owner_id=request.owner_id
+        owner_id=request.owner_id,
     )
     db.add(new_product)
     db.commit()
@@ -56,3 +62,13 @@ def get_product_by_category(category: str, db: Session) -> list[Product]:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
                             detail=f'Product with category = {category} not found')
     return product
+
+def delete_product_by_id(product_id:int, db:Session) -> Product:
+    product = db.query(Product).filter(Product.id == product_id).first()
+    if not product:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
+                            detail=f'Product with id = {product_id} not found')
+    db.delete(product)
+    db.commit()
+    raise HTTPException(status_code=status.HTTP_200_OK,
+                        detail=f'Product with id = {product_id} delete')
