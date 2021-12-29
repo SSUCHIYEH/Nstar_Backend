@@ -6,12 +6,28 @@ from sqlalchemy.exc import IntegrityError
 from db.models import User
 from utils.hash import bcrypt, verify
 from utils.oauth2 import create_access_token
+from .user_feed import users
 
+
+def db_feed(db:Session):
+    new_user_list = [User(
+        username=user["username"],
+        email=user["email"],
+        image=user["image"],
+        is_admin=True,
+        password=user["password"]
+    ) for user in users]
+    db.query(User).delete()
+    db.commit()
+    db.add_all(new_user_list)
+    db.commit()
+    return db.query(User).all()
 
 def register(db: Session, request: UserRequestSchema) :
     new_user = User(
         username=request.username,
         email=request.email,
+        image=request.image,
         password=bcrypt(request.password),
         is_admin=request.is_admin,
     )

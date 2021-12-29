@@ -13,6 +13,9 @@ def create_user_sellproduct(user_id: int, request: ProductRequestSchema, db: Ses
         name=request.name,
         price=request.price,
         image=request.image,
+        tag=request.tag,
+        color=request.color,
+        size=request.size,
         description=request.description,
         owner_id=user_id
     )

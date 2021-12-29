@@ -35,7 +35,7 @@ class User(Base):
     image = Column(String(100))
     email = Column(String(30), unique=True)
     password = Column(String(255))
-    is_admin = Column(Boolean, default=False)
+    is_admin = Column(Boolean, default=True)
     products_sell = relationship('Product', back_populates='owner')
     collects_like = relationship('Like', back_populates='liker')
     order_buy = relationship('Order', foreign_keys="Order.user_buy_id", back_populates='user_buy')

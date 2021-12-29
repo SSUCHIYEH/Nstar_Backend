@@ -18,6 +18,11 @@ async def create(request: UserRequestSchema, db: Session = Depends(get_db)):
     return db_user.create(db=db, request=request)
 
 
+@router.get('/feed', response_model=List[UserResponseSchema])
+def feed_initial_users(db:Session = Depends(get_db)):
+    return db_user.db_feed(db)
+
+
 @router.post('/user/register', response_model=UserSignInResponseSchema)
 async def register(request: UserRequestSchema, db: Session = Depends(get_db)):
     return db_user.register(db=db, request=request)
