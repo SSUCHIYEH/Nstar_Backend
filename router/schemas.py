@@ -162,7 +162,6 @@ class CreateOrderBuyRequestSchema(BaseModel):
 # 回應創建訂單
 class CreateOrderBuyResponseSchema(BaseModel):
     id: str
-    finish: bool
     payment: str
     address: str
     totalprice: int
@@ -177,7 +176,6 @@ class CreateOrderBuyResponseSchema(BaseModel):
 # order buy 詳細
 class OrderBuyResponseSchema(BaseModel):
     id: str
-    finish: bool
     payment: str
     address: str
     totalprice: int
@@ -191,7 +189,6 @@ class OrderBuyResponseSchema(BaseModel):
 # order sell 詳細
 class OrderSellResponseSchema(BaseModel):
     id: str
-    finish: bool
     payment: str
     address: str
     totalprice: int

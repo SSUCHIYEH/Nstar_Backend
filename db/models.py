@@ -45,7 +45,6 @@ class User(Base):
 class Order(Base):
     __tablename__ = 'order'
     id = Column(String, primary_key=True, nullable=False)
-    finish = Column(Boolean, default=False)
     payment = Column(String(30))
     address = Column(String(100))
     totalprice = Column(Integer)

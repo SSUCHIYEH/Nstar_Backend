@@ -7,12 +7,11 @@ from db.models import User, Product_sale, Order
 import uuid
 
 
-def create_order(user_buy_id:int,request: CreateOrderBuyRequestSchema,db:Session):
+def create_order(user_buy_id: int, request: CreateOrderBuyRequestSchema, db: Session):
     id = uuid.uuid4()
     try:
         new_order = Order(
             id=str(id),
-            finish=False,
             payment=request.payment,
             address=request.address,
             totalprice=request.totalprice,
