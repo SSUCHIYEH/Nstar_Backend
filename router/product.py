@@ -36,6 +36,6 @@ def get_product_by_category(category: str, db: Session = Depends(get_db)):
     return db_product.get_product_by_category(category=category, db=db)
 
 
-@router.delete("/delete/{product_id}")
+@router.get("/delete/{product_id}")
 def delete_product_by_id(product_id: int, db: Session = Depends(get_db)):
     return db_product.delete_product_by_id(product_id=product_id, db=db)
