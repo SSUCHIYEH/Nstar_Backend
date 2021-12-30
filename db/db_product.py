@@ -63,6 +63,7 @@ def get_product_by_category(category: str, db: Session) -> list[Product]:
                             detail=f'Product with category = {category} not found')
     return product
 
+
 def delete_product_by_id(product_id:int, db:Session) -> Product:
     product = db.query(Product).filter(Product.id == product_id).first()
     if not product:
