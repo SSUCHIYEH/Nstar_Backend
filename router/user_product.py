@@ -25,6 +25,7 @@ def get_user_by_id(user_id: int, db: Session = Depends(get_db)):
 def create_sellproduct(user_id: int, request: ProductRequestSchema, db: Session = Depends(get_db)):
     return db_user_product.create_user_sellproduct(user_id=user_id, request=request, db=db)
 
+
 # 查詢我的收藏
 @router.get('/like-collect/{user_id}', response_model=UserResponseWithLikeProductSchema)
 def get_user_like_by_id(user_id: int, db: Session = Depends(get_db)):

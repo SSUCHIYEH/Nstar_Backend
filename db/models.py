@@ -70,3 +70,10 @@ class Product_sale(Base):
     order_id = Column(String, ForeignKey('order.id'), nullable=False)
     order = relationship('Order', back_populates='product_items', foreign_keys=[order_id])
 
+
+class Image(Base):
+    __tablename__ = 'image'
+    id = Column(Integer, primary_key=True, index=True)
+    img = Column(String)
+    name = Column(String)
+    mimetype = Column(String)

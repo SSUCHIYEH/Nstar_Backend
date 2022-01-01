@@ -62,7 +62,6 @@ class ProductRequestSchema(BaseModel):
     tag: str
 
 
-
 # 商品
 class ProductResponseSchema(ProductRequestSchema):
     id: int
@@ -135,6 +134,9 @@ class SaledProductRequestSchema(BaseModel):
     image: str
     description: str
 
+    class Config:
+        orm_mode = True
+
 
 # 回應商品時要有訂單號碼
 class SaledProductResponseSchema(SaledProductRequestSchema):
@@ -199,6 +201,14 @@ class OrderSellResponseSchema(BaseModel):
         orm_mode = True
 
 
+class UserResponseWithOrderSellSchema(BaseModel):
+    id: int
+    order_sell: List[OrderSellResponseSchema] = []
+
+    class Config:
+        orm_mode = True
+
+
 # user 回 OrderBuy
 class UserResponseWithOrderBuySchema(BaseModel):
     id: int
@@ -208,11 +218,5 @@ class UserResponseWithOrderBuySchema(BaseModel):
         orm_mode = True
 
 
-class UserResponseWithOrderSellSchema(BaseModel):
-    id: int
-    order_sell: List[OrderSellResponseSchema] = []
-
-    class Config:
-        orm_mode = True
 
 

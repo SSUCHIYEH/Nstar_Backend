@@ -19,11 +19,11 @@ def create_order_buy_by_id(user_id: int, request: CreateOrderBuyRequestSchema, d
 
 # 查詢購買訂單
 @router.get('/get-buy-order/{user_id}', response_model=UserResponseWithOrderBuySchema)
-def get_user_buy_order_by_id(user_id: int, db : Session = Depends(get_db)):
+def get_user_buy_order_by_id(user_id: int, db: Session = Depends(get_db)):
     return db_user_order.get_user_order_by_id(user_id=user_id, db=db)
 
 
 # 查詢販售訂單
 @router.get('/get-sell-order/{user_id}', response_model=UserResponseWithOrderSellSchema)
-def get_user_sell_order_by_id(user_id: int, db : Session = Depends(get_db)):
+def get_user_sell_order_by_id(user_id: int, db: Session = Depends(get_db)):
     return db_user_order.get_user_order_by_id(user_id=user_id, db=db)
