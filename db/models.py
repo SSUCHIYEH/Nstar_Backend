@@ -27,8 +27,8 @@ class Like(Base):
     id = Column(Integer, primary_key=True, index=True)
     liker_id = Column(Integer, ForeignKey('user.id'))
     liker = relationship('User', back_populates='collects_like')
-    product = relationship('Product')
     product_id = Column(Integer, ForeignKey('product.id'))
+    product = relationship('Product', foreign_keys=[product_id])
 
 
 class User(Base):

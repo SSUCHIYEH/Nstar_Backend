@@ -107,7 +107,15 @@ class UserLikeCollectSchema(BaseModel):
         orm_mode = True
 
 
-class UserResponseLikeCollectSchema(UserLikeCollectSchema):
+class UserLikeResponseCollectSchema(BaseModel):
+    product_id: int
+    product: ProductResponseWithUserSchema
+
+    class Config:
+        orm_mode = True
+
+
+class UserResponseLikeCollectSchema(UserLikeResponseCollectSchema):
     id: int
 
     class Config:
