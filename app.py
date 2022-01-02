@@ -1,7 +1,7 @@
 import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from router import product, user, user_product, user_order, authentication
+from router import product, user, user_product, user_order, authentication, user_like
 from db import models
 from db.database import newengine
 
@@ -13,9 +13,10 @@ app = FastAPI(
 )
 
 app.include_router(user.router)
+app.include_router(product.router)
 app.include_router(user_product.router)
 app.include_router(user_order.router)
-app.include_router(product.router)
+app.include_router(user_like.router)
 app.include_router(authentication.router)
 
 
