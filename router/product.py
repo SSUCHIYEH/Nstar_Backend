@@ -1,9 +1,12 @@
-from fastapi import APIRouter, Depends, status
+import shutil
+from fastapi import APIRouter, Depends, status, UploadFile, File
+from fastapi.responses import FileResponse
 from sqlalchemy.orm import Session
 from router.schemas import ProductRequestSchema, ProductResponseSchema, ProductResponseWithUserSchema
 from db.database import get_db
 from db import db_product
 from typing import List
+
 
 router = APIRouter(
     prefix='/api/v1/products',
@@ -39,3 +42,15 @@ def get_product_by_category(category: str, db: Session = Depends(get_db)):
 @router.get("/delete/{product_id}")
 def delete_product_by_id(product_id: int, db: Session = Depends(get_db)):
     return db_product.delete_product_by_id(product_id=product_id, db=db)
+
+
+@router.post('/image')
+async def upload_image(file: UploadFile = File(...), db: Session = Depends(get_db)):
+    with open(f'{file.filename}', "wb") as buffer:
+        shutil.copyfileobj(file.file, buffer)
+    return  {"file_name": file.filename}
+
+
+@router.get('/image/{name}')
+async def get_image(name: str):
+    return  FileResponse(name,media_type="image/png")

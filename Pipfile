@@ -14,6 +14,7 @@ email-validator = "*"
 python-jose = "*"
 python-multipart = "*"
 bcrypt = "*"
+deta = "*"
 
 [dev-packages]
 

@@ -5,7 +5,6 @@ from router import product, user, user_product, user_order, authentication
 from db import models
 from db.database import newengine
 
-
 app = FastAPI(
     title="Nstar API",
     description="This API was developed for Nstar Fast API",
@@ -18,6 +17,9 @@ app.include_router(user_product.router)
 app.include_router(user_order.router)
 app.include_router(product.router)
 app.include_router(authentication.router)
+
+
+
 
 if __name__ == "__main__":
     uvicorn.run("app:app", port= 5000, reload=True)

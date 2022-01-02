@@ -1,8 +1,11 @@
+import sqlalchemy
+
 from .database import Base
 from sqlalchemy import Column, Integer, String, Boolean, TIMESTAMP
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql.schema import ForeignKey
 
+metaData = sqlalchemy.MetaData()
 
 class Product(Base):
     __tablename__ = 'product'
@@ -74,6 +77,4 @@ class Product_sale(Base):
 class Image(Base):
     __tablename__ = 'image'
     id = Column(Integer, primary_key=True, index=True)
-    img = Column(String)
-    name = Column(String)
-    mimetype = Column(String)
+    name = Column(String, nullable=False)
